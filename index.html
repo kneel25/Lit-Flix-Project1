@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lit Flix</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+<!-- google fonts link-->
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+<!-- css link  -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+    <div class="jumbotron">                                     <!-- field for user to enter movie  -->
+        <h1 class="text-center">Lit Flix</h1>
+        <h3 class="text-center">Search movies to view showtimes, movie posters, and descriptions!</h3>
+    </div>                                                      <!--   closing tag for div that holds the header    -->
+    <div class="row">                                           <!-- row to hold movie search form -->
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <label for="">Enter the name of the movie you want to see</label>
+                    <input type="text" class="form-control" id="movieInput" placeholder="">               <!-- field for user to enter movie  -->
+                    <button type="submit" class="btn btn-default" id="submitButton">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>                                                      <!-- closing tag for the row that holds the movie search form  -->
+    <div class="row">                                           <!-- row to hold showtime search and table-->
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class "text-center">Movie Time Table</h3>
+                    <label for="">Enter the zip code where you want to see movie</label>
+                    <input type="text" class="form-control" id="zipCode" placeholder="">                <!-- field for user to enter zip code  -->
+                    <button type="submit" class="btn btn-default" id="submitButton">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>                                                      <!-- closing tag for the row that holds the showtime search and table  -->
+    <div class="row">                                           <!-- row to hold the trailer -->
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class "text-center">Trailer</h3>
+                    <img id="trailer">
+                    <!-- ***** THIS IS WHERE THE TRAILER WILL GO *****  -->
+                </div>
+            </div>
+        </div>
+    </div>                                                  <!-- closing tag for the row that trailer  -->
+    <div class="row">                                       <!-- row to hold the movie poster-->
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class "text-center">Movie Poster</h3>
+                    <img>
+                    <!-- ***** THIS IS WHERE THE MOVIE POSTER WILL GO *****  -->
+                </div>
+            </div>
+        </div>
+    </div>                                                  <!-- closing tag for the row that holds the movie poster  -->
+    <div class="row">                                       <!-- row to hold the movie description and rating-->
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class "text-center">Movie Description and Rating</h3>
+                    <p id="description"></p>
+                    <!-- ***** THIS IS WHERE THE MOVIE DESCRIPTION WILL GO *****  -->
+                    <p id="rating"></p>
+                    <!-- ***** THIS IS WHERE THE MOVIE RATING WILL GO *****  -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- closing tag for the movie description and rating  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    <!-- connects to jquery library  -->
+    
+<!-- JS link -->
+    <script src="assets/javascript.js"></script>
+</body>
+</html>
