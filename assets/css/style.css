@@ -4,3 +4,45 @@ body {
     font-weight: bold;
 }
 
+
+#movie-search {
+
+    width: 883px;
+    height: 2px;
+    margin: auto;
+    margin-bottom: 30px;
+
+}
+
+#movie-time{
+
+    margin-left: 50px;
+    float: left;
+
+
+}
+
+#trailer {
+
+    width: 897px;
+    float: right;
+    margin-right: 70px;
+
+}
+
+#poster {
+    width: 450px;
+    margin-left: 50px;
+    float: left;
+
+    
+}
+
+
+#movie-rating {
+
+    width: 850px;
+    float: right;
+    margin-right: 70px;
+
+}
