@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,90 +8,92 @@
     <title>Lit Flix</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-<!-- google fonts link-->
+    <!-- google fonts link-->
     <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
-<!-- css link  -->
+    <!-- css link  -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
+
 <body>
-    <div class="jumbotron">                                     <!-- field for user to enter movie  -->
-
-
-
+    <div class="jumbotron">
+    <!-- field for user to enter movie  -->
         <h1 class="text-center">Lit Flix</h1>
-
-    
-
-
         <h3 class="text-center">Search movies to view showtimes, movie posters, and descriptions!</h3>
-    </div>                                                      <!--   closing tag for div that holds the header    -->
-    <div class="row">                                           <!-- row to hold movie search form -->
+    </div>
+    <!--   closing tag for div that holds the header    -->
+    <div class="row">
+        <!-- row to hold movie search form -->
         <div class="col-md-12">
-            <div id="movie-search"class="input-group">
-                <input type="text" class="form-control" placeholder="Movie search...">
+            <div id="movie-search" class="input-group">
+                <input type="text" class="form-control" id="movieInput" placeholder="Movie search...">
                 <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Go!</button>
+                    <button class="btn btn-default" id="goButton" type="button">Go!</button>
                 </span>
-              </div>
+            </div>
 
         </div>
-    </div>                                                   <!-- closing tag for the row that holds the movie search form  -->
-<div id"container">                                                
-    <div class="row">                                           <!-- row to hold showtime search and table and trailer-->
-        <div class="col-md-4">
-            <div id="movie-time" class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class "text-center">Movie Time Table</h3>
-                    <div id="zip-search"class="input-group">
-                        <input type="text" class="form-control" placeholder="Enter City + State, ZIP Code or Movie">
-                        <span class="input-group-btn">
-                          <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                      </div>
+    </div>
+                    <!-- closing tag for the row that holds the movie search form  -->
+    <div id "container">
+        <div class="row">
+            <!-- row to hold showtime search and table and trailer-->
+            <div class="col-md-4">
+                <div id="movie-time" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class "text-center">Movie Time Table</h3>
+                        <div id="zip-search" class="input-group">
+                            <input type="text" class="form-control" placeholder="Enter City + State, ZIP Code or Movie">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Go!</button>
+                            </span>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div id="trailer" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="text-center">Trailer</h3>
+                        <img id="trailer">
+                        <!-- ***** THIS IS WHERE THE TRAILER WILL GO *****  -->
+                    </div>
                 </div>
             </div>
         </div>
-                                                       
-        <div class="col-md-8">
-            <div id="trailer" class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class= "text-center">Trailer</h3>
-                    <img id="trailer">
-                    <!-- ***** THIS IS WHERE THE TRAILER WILL GO *****  -->
+        <!-- closing tag for the row for showtime search and trailer -->
+        <div class="row">
+            <!-- row to hold the movie poster and movie description-->
+            <div class="col-md-4">
+                <div id="poster" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class "text-center">Movie Poster</h3>
+                        <!-- ***** THIS IS WHERE THE MOVIE POSTER WILL GO *****  -->
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>                                                  <!-- closing tag for the row for showtime search and trailer -->
-    <div class="row">                                       <!-- row to hold the movie poster and movie description-->
-        <div class="col-md-4">
-            <div id="poster" class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class "text-center">Movie Poster</h3>
-                    <img>
-                    <!-- ***** THIS IS WHERE THE MOVIE POSTER WILL GO *****  -->
-                </div>
-            </div>
-        </div>
-   
-    
-        <div class="col-md-8">
-            <div id="movie-rating" class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class "text-center">Movie Description and Rating</h3>
-                    <p id="description"></p>
-                    <!-- ***** THIS IS WHERE THE MOVIE DESCRIPTION WILL GO *****  -->
-                    <p id="rating"></p>
-                    <!-- ***** THIS IS WHERE THE MOVIE RATING WILL GO *****  -->
+
+
+            <div class="col-md-8">
+                <div id="movie-rating" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class "text-center">Movie Description and Rating</h3>
+                        
+                        <!-- ***** THIS IS WHERE THE MOVIE DESCRIPTION WILL GO *****  -->
+                        
+                        <!-- ***** THIS IS WHERE THE MOVIE RATING WILL GO *****  -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>    
     <!-- closing tag for the movie poster and description and rating  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    <!-- connects to jquery library  -->
-    
-<!-- JS link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- connects to jquery library  -->
+
+    <!-- JS link -->
     <script src="assets/javascript.js"></script>
 </body>
+
 </html>
