@@ -5,17 +5,6 @@ $("#goButton").on("click", function () {
     var userMovieInput = $("#movieInput").val().trim();
     console.log(userMovieInput);
 
-
-    var queryURL = "https://www.omdbapi.com/?t=" + userMovieInput + "&y=&plot=full&apikey=6c0bb571";
-    //ajax function
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response)
-
-        var imgPoster = response.Poster;
-        var posterDiv = $("<img>").attr("src", imgPoster);
         $("#poster").html(posterDiv);
 
         var description = response.Plot;
