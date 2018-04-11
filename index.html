@@ -15,11 +15,12 @@
 </head>
 
 <body>
-    <div class="jumbotron">
-        <!-- field for user to enter movie  -->
-        <h1 class="text-center">Lit Flix</h1>
-        <h3 class="text-center">Search movies to view showtimes, movie posters, and descriptions!</h3>
-    </div>
+    <header class="main-header">
+        <img src="assets/images/litnowords.png" alt="Banner Image" style="width:100%">
+        <br>
+        <br>
+        <br>
+    </header>
     <!--   closing tag for div that holds the header    -->
     <div class="row">
         <!-- row to hold movie search form -->
@@ -69,7 +70,7 @@
                 <div id="poster" class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class "text-center">Movie Poster</h3>
-                        <img id="moviePoster">
+
                         <!-- ***** THIS IS WHERE THE MOVIE POSTER WILL GO *****  -->
                     </div>
                 </div>
@@ -77,13 +78,18 @@
 
 
             <div class="col-md-8">
-                <div id="movie-rating" class="panel panel-default">
+                <div id="movie-overview" class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class "text-center">Movie Description and Rating</h3>
-                        <p id="description"></p>
+                        <h3 class "text-center">Movie Overview</h3>
+                        <p id="description"> </p>
                         <!-- ***** THIS IS WHERE THE MOVIE DESCRIPTION WILL GO *****  -->
-                        <p id="rating"></p>
+                        <p class="" id="rating"></p>
                         <!-- ***** THIS IS WHERE THE MOVIE RATING WILL GO *****  -->
+                        <p class="" id="runtime"></p>
+                        <!-- ***** THIS IS WHERE THE MOVIE RUNTIME WILL GO *****  -->
+                        <p class="" id="releasedate"></p>
+                        <!-- ***** THIS IS WHERE THE MOVIE RELEASE DATE WILL GO *****  -->
+
                     </div>
                 </div>
             </div>
