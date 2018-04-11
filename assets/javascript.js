@@ -6,6 +6,7 @@ $("#goButton").on("click", function () {
     console.log(userMovieInput);
 
 
+
     var queryURL = "https://www.omdbapi.com/?t=" + userMovieInput + "&y=&plot=full&apikey=6c0bb571";
     //ajax function
     $.ajax({
@@ -17,6 +18,8 @@ $("#goButton").on("click", function () {
         var imgPoster = response.Poster;
         var posterDiv = $("<img>").attr("src", imgPoster);
         $("#image-poster").html(posterDiv);
+        
+
 
         var description = response.Plot;
         var descriptionDiv = $("<p>").html("Description: " + description);
@@ -36,7 +39,7 @@ $("#goButton").on("click", function () {
         $("#releasedate").html(releaseDateDiv);
 
     });
-
+  
     var userMovieInputYT = $("#movieInput").val().trim() + "official movie trailer";
     var youTubeAPI = {
         url: "https://www.googleapis.com/youtube/v3/search",
@@ -71,3 +74,4 @@ $("#goButton").on("click", function () {
             }
         });
 });
+
