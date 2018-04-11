@@ -16,15 +16,24 @@ $("#goButton").on("click", function () {
 
         var imgPoster = response.Poster;
         var posterDiv = $("<img>").attr("src", imgPoster);
-        $("#poster").append(posterDiv);
+        $("#poster").html(posterDiv);
 
         var description = response.Plot;
         var descriptionDiv = $("<p>").html("Description: " + description);
-        $("#movie-rating").append(descriptionDiv);
+        $("#description").html(descriptionDiv);
+        console.log(descriptionDiv)
 
         var rating = response.Rated;
         var ratingDiv = $("<p>").html("Rating: " + rating);
-        $("#movie-rating").append(ratingDiv);
+        $("#rating").html(ratingDiv);
+
+        var runTime = response.Runtime;
+        var runTimeDiv = $("<p>").html("Run Time: " + runTime);
+        $("#runtime").html(runTimeDiv);
+
+        var releaseDate = response.Released;
+        var releaseDateDiv = $("<p>").html("Release Date: " + releaseDate);
+        $("#releasedate").html(releaseDateDiv);
 
 
 
