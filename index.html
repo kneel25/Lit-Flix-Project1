@@ -12,16 +12,45 @@
     <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
     <!-- css link  -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- tab icon -->
+    <link rel="icon" href="assets/images/pop.png">
 </head>
 
 <body>
-    <header class="main-header">
+    <!-- <header class="main-header">
         <img src="assets/images/litnowords.png" alt="Banner Image" style="width:100%">
         <br>
         <br>
         <br>
-    </header>
+    </header> -->
     <!--   closing tag for div that holds the header    -->
+
+    <!-- clicks in the header to go to the image trailer in youtube -->
+    <header>
+        <img src="assets/images/litnowords.png" alt="Banner Image" style="width:100%" usemap="#image-map">
+        <br>
+        <br>
+    </header>
+        <map name="image-map">
+            <map name="image-map">
+                <area target="_blank" alt="Harry Potter and The Goblet of Fire" title="Harry Potter and The Goblet of Fire" href="https://youtu.be/PFWAOnvMd1Q"
+                    coords="170,4,-1,240" shape="rect">
+                <area target="_blank" alt="Mulan" title="Mulan" href="https://youtu.be/TVcLIfSC4OE" coords="340,257,178,3" shape="rect">
+                <area target="_blank" alt="Clueless" title="Clueless" href="https://youtu.be/RS0KyTZ3Ie4" coords="340,5,500,257" shape="rect">
+                <area target="_blank" alt="Avengers Infinity Wars" title="Avengers Infinity Wars" href="https://youtu.be/6ZfuNTqbHE8" coords="510,0,677,257"
+                    shape="rect">
+                <area target="_blank" alt="Kiki's Delivery Service" title="Kiki's Delivery Service" href="https://youtu.be/4bG17OYs-GA" coords="845,255,680,1"
+                    shape="rect">
+                <area target="_blank" alt="Jurassic Park" title="Jurassic Park" href="https://youtu.be/lc0UehYemQA" coords="1025,254,840,0"
+                    shape="rect">
+                <area target="_blank" alt="Ready Player One" title="Ready Player One" href="https://youtu.be/cSp1dM2Vj48" coords="1015,1,1180,257"
+                    shape="rect">
+                <area target="_blank" alt="StarWars" title="StarWars" href="https://youtu.be/vP_1T4ilm8M" coords="1180,1,1350,254" shape="rect">
+            </map>
+        </map>
+    
+    <!-- end image-map***************** -->
+
     <div class="row">
         <!-- row to hold movie search form -->
         <div class="col-md-12">
@@ -42,13 +71,12 @@
                 <div id="movie-time" class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class "text-center">Movie Time Table</h3>
-                        <div id="zip-search" class="input-group">
-                            <input type="text" class="form-control" placeholder="Enter City + State, ZIP Code or Movie">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Go!</button>
-                            </span>
-                        </div>
-
+                    </div>
+                    <div id="zip-search" class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter City + State, ZIP Code or Movie">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -96,12 +124,17 @@
     </div>
     <!-- closing tag for the movie poster and description and rating  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- connects to jquery library  -->
-
     <!-- JS link -->
     <script src="assets/javascript.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-        crossorigin="anonymous"></script>
+    <!-- connects to jquery library  -->
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 </body>
 
 </html>
