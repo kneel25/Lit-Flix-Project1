@@ -1,11 +1,9 @@
 console.log("javascript works")
 
 $("#goButton").on("click", function () {
-
+    //start OMDB API CALL **********
     var userMovieInput = $("#movieInput").val().trim();
     console.log(userMovieInput);
-
-
 
     var queryURL = "https://www.omdbapi.com/?t=" + userMovieInput + "&y=&plot=full&apikey=6c0bb571";
     //ajax function
@@ -14,7 +12,7 @@ $("#goButton").on("click", function () {
         method: "GET"
     }).then(function (response) {
         console.log(response)
-
+        //poster
         var imgPoster = response.Poster;
         var posterDiv = $("<img>").attr("src", imgPoster);
 
@@ -24,20 +22,21 @@ $("#goButton").on("click", function () {
         var descriptionDiv = $("<p>").html("Description: " + description);
         $("#description").html(descriptionDiv);
         console.log(descriptionDiv)
-
+        //rating
         var rating = response.Rated;
         var ratingDiv = $("<p>").html("Rating: " + rating);
         $("#rating").html(ratingDiv);
-
+        //runtime
         var runTime = response.Runtime;
         var runTimeDiv = $("<p>").html("Run Time: " + runTime);
         $("#runtime").html(runTimeDiv);
-
+        //release date
         var releaseDate = response.Released;
         var releaseDateDiv = $("<p>").html("Release Date: " + releaseDate);
         $("#releasedate").html(releaseDateDiv);
 
     });
+
 
 });
 
@@ -134,8 +133,6 @@ function displayShowtimes() {
 };
 
 
-
-  
     var userMovieInputYT = $("#movieInput").val().trim() + "official movie trailer";
     var youTubeAPI = {
         url: "https://www.googleapis.com/youtube/v3/search",
@@ -171,3 +168,18 @@ function displayShowtimes() {
         });
 
 
+    //end youTube API CALL *************
+
+});
+//enter button code*************
+function enter() {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("goButton").click();
+    }
+
+}
+
+var input = document.getElementById("movieInput");
+input.addEventListener("keyup", enter);
+//end enter button function *********
