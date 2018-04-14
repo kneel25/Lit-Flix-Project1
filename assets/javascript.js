@@ -16,7 +16,10 @@ $("#goButton").on("click", function () {
         var imgPoster = response.Poster;
         var posterDiv = $("<img>").attr("src", imgPoster);
         $("#image-poster").html(posterDiv);
+
+        
         //description
+
         var description = response.Plot;
         var descriptionDiv = $("<p>").html("Description: " + description);
         $("#description").html(descriptionDiv);
@@ -35,9 +38,11 @@ $("#goButton").on("click", function () {
         $("#releasedate").html(releaseDateDiv);
 
     });
+
     // end OMDB API CALL *******
 
     //start youTube API CALL ***********
+
     var userMovieInputYT = $("#movieInput").val().trim() + "official movie trailer";
     var youTubeAPI = {
         url: "https://www.googleapis.com/youtube/v3/search",
@@ -71,6 +76,7 @@ $("#goButton").on("click", function () {
                 $('.trailer').html(trailerDiv);
             }
         });
+
     //end youTube API CALL *************
 
 });
