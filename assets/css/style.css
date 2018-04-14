@@ -20,6 +20,7 @@
     width: 450px;
     margin-left: 50px;
     float: left;
+
 }
 
 #movie-overview {
@@ -27,7 +28,6 @@
     float: right;
     margin-right: 70px;
 }
-
 
 #image-poster {
     display: block;
