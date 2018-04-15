@@ -25,24 +25,24 @@
         <br>
         <br>
     </header>
+    <map name="image-map">
         <map name="image-map">
-            <map name="image-map">
-                <area target="_blank" alt="Harry Potter and The Goblet of Fire" title="Harry Potter and The Goblet of Fire" href="https://youtu.be/PFWAOnvMd1Q"
-                    coords="170,4,-1,240" shape="rect">
-                <area target="_blank" alt="Mulan" title="Mulan" href="https://youtu.be/TVcLIfSC4OE" coords="340,257,178,3" shape="rect">
-                <area target="_blank" alt="Clueless" title="Clueless" href="https://youtu.be/RS0KyTZ3Ie4" coords="340,5,500,257" shape="rect">
-                <area target="_blank" alt="Avengers Infinity Wars" title="Avengers Infinity Wars" href="https://youtu.be/6ZfuNTqbHE8" coords="510,0,677,257"
-                    shape="rect">
-                <area target="_blank" alt="Kiki's Delivery Service" title="Kiki's Delivery Service" href="https://youtu.be/4bG17OYs-GA" coords="845,255,680,1"
-                    shape="rect">
-                <area target="_blank" alt="Jurassic Park" title="Jurassic Park" href="https://youtu.be/lc0UehYemQA" coords="1025,254,840,0"
-                    shape="rect">
-                <area target="_blank" alt="Ready Player One" title="Ready Player One" href="https://youtu.be/cSp1dM2Vj48" coords="1015,1,1180,257"
-                    shape="rect">
-                <area target="_blank" alt="StarWars" title="StarWars" href="https://youtu.be/vP_1T4ilm8M" coords="1180,1,1350,254" shape="rect">
-            </map>
+            <area  class="trailer-image" target="_blank" alt="Harry Potter and The Goblet of Fire" title="Harry Potter and The Goblet of Fire" href="https://youtu.be/PFWAOnvMd1Q"
+                coords="170,4,-1,240" shape="rect">
+            <area class="trailer-image" target="_blank" alt="Mulan" title="Mulan" href="https://youtu.be/TVcLIfSC4OE" coords="340,257,178,3" shape="rect">
+            <area class="trailer-image" target="_blank" alt="Clueless" title="Clueless" href="https://youtu.be/RS0KyTZ3Ie4" coords="340,5,500,257" shape="rect">
+            <area class="trailer-image" target="_blank" alt="Avengers Infinity Wars" title="Avengers Infinity Wars" href="https://youtu.be/6ZfuNTqbHE8" coords="510,0,677,257"
+                shape="rect">
+            <area class="trailer-image" target="_blank" alt="Kiki's Delivery Service" title="Kiki's Delivery Service" href="https://youtu.be/4bG17OYs-GA" coords="845,255,680,1"
+                shape="rect">
+            <area class="trailer-image" target="_blank" alt="Jurassic Park" title="Jurassic Park" href="https://youtu.be/lc0UehYemQA" coords="1025,254,840,0"
+                shape="rect">
+            <area class="trailer-image" target="_blank" alt="Ready Player One" title="Ready Player One" href="https://youtu.be/cSp1dM2Vj48" coords="1015,1,1180,257"
+                shape="rect">
+            <area class="trailer-image" target="_blank" alt="StarWars" title="StarWars" href="https://youtu.be/vP_1T4ilm8M" coords="1180,1,1350,254" shape="rect">
         </map>
-    
+    </map>
+
     <!-- end image-map***************** -->
 
     <div class="row">
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-<!-- IF YOU NEED TO UNDO THIS IS THE LAST ONE TO UNDO  -->
+    <!-- IF YOU NEED TO UNDO THIS IS THE LAST ONE TO UNDO  -->
 
     <!-- closing tag for the row that holds the movie search form  -->
     <div id "container">
@@ -90,19 +90,20 @@
 
 
                     </div>
-                    
+
                     <!-- ***** WILL NEED TWO TABLES *****  one to hold the list of movie names   and another to hold the showtimes results -->
-                    
+
                     <!-- this is for the table that holds the movie names  -->
                     <table style="width:100%" id="moviesList">
-                            <tr>
-                                <th>Movies Playing Now</th>
-                                <th>Movies Playing Now</th>
-                            </tr>
-                        </table>
+                        <tr>
+                            <th>Movies Playing Now</th>
+                            <th>Movies Playing Now</th>
+                        </tr>
+                    </table>
 
                     <!-- this is for the table that holds the movie results  -->
-                    <table style="width:100%" id="showtimeTable">    <!-- I added a hidden class so this will not appear until the user clicks on a movie  -->
+                    <table style="width:100%" id="showtimeTable">
+                        <!-- I added a hidden class so this will not appear until the user clicks on a movie  -->
                         <tr>
                             <th>Movie</th>
                             <th>Theater</th>
