@@ -1,10 +1,8 @@
 console.log("javascript works")
-
 $("#goButton").on("click", function () {
     //start OMDB API CALL -kn **********
     var userMovieInput = $("#movieInput").val().trim();
     console.log(userMovieInput);
-
     var queryURL = "https://www.omdbapi.com/?t=" + userMovieInput + "&y=&plot=full&apikey=6c0bb571";
     //ajax function
     $.ajax({
@@ -15,7 +13,6 @@ $("#goButton").on("click", function () {
         //poster
         var imgPoster = response.Poster;
         var posterDiv = $("<img>").attr("src", imgPoster);
-
         $("#image-poster").html(posterDiv);
         //description
         var description = response.Plot;
@@ -34,114 +31,115 @@ $("#goButton").on("click", function () {
         var releaseDate = response.Released;
         var releaseDateDiv = $("<p>").html("Release Date: " + releaseDate);
         $("#releasedate").html(releaseDateDiv);
-
     });
-
     // youTube API call for all movie trailers entered from search bar. -cr ******************
     var userMovieInputYT = $("#movieInput").val().trim() + "official movie trailer";
     youtubeFunc(userMovieInput);
     // end youTube API call************
-});
-
+}); // end of gobutton onclick function
 $("#showtimeButton").on("click", function () {
-
     var userZipCodeInput = $("#zipCodeField").val().trim();
     console.log(userZipCodeInput);
-
     $("#dateField").attr("pattern", "[0-9]{4}-[0-9]{2}-[0-9]{2}");
     var userDateInput = $("#dateField").val().trim();
     console.log(userDateInput);
-
     if ((userZipCodeInput === "") || (userDateInput === "")) {
         $("#missingInput").html("Missing input. Please input a zip code and a date.")
     } else {
-        displayShowtimes();
+        findMovies();
     }
-
-});
-
-//   IN THIS BLOCK OF CODE I NEED TO CHANGE THE ID TO RECOGNIZE THE NAME OF THE MOVIE
-$("#showtimeButton").on("click", function () {
-
-    var userZipCodeInput = $("#zipCodeField").val().trim();
-    console.log(userZipCodeInput);
-
-    $("#dateField").attr("pattern", "[0-9]{4}-[0-9]{2}-[0-9]{2}");
-    var userDateInput = $("#dateField").val().trim();
-    console.log(userDateInput);
-
-    if ((userZipCodeInput === "") || (userDateInput === "")) {
-        $("#missingInput").html("Missing input. Please input a zip code and a date.")
-    } else {
-        displayShowtimes();
-    }
-
-});
-
-function displayShowtimes() {
-    $("#missingInput").remove();
-
+}); // end of showtimeButton onclick function
+function findMovies() {
+    $("#missingInput").html("");
+    var newSearchButton = $("<button>").attr("class", "btn btn-default");
+    $(newSearchButton).attr("type", "button");
+    $(newSearchButton).attr("id", "searchNewMovie");
+    $(newSearchButton).html("Search for a new movie");
+    $("#searchButtons").append(newSearchButton);
     var userZipCodeInput = $("#zipCodeField").val().trim();
     var userDateInput = $("#dateField").val().trim();
-
     var queryShowtimeURL = "https://data.tmsapi.com/v1.1/movies/showings?startDate=" + userDateInput + "&zip=" + userZipCodeInput + "&api_key=c8v7sma8c67xv5zkxcd7ndb6";
-
     $.ajax({
         url: queryShowtimeURL,
         method: "GET"
     }).then(function (results) {
         console.log(results)
+        var infoLeftSide = results.slice(0, (results.length / 2));
+        var infoRightSide = results.slice((results.length / 2));
+        console.log(infoLeftSide);
+        console.log(infoRightSide);
+        for (h = 0; h < infoLeftSide.length; h++) {
+            var titleDisplayLeft = infoLeftSide[h].title;
+            var createPtagLeft = $("<p>").html(titleDisplayLeft);
+            $(createPtagLeft).attr("class", "moviesForList");
+            $(createPtagLeft).attr("id", infoLeftSide[h].title);
+            $("#leftSide").append(createPtagLeft);
+        };
+        for (w = 0; w < infoRightSide.length; w++) {
+            var titleDisplayRight = infoRightSide[w].title;
+            var createPtagRight = $("<p>").html(titleDisplayRight);
+            $(createPtagRight).attr("class", "moviesForList");
+            $(createPtagRight).attr("id", infoRightSide[w].title);
+            $("#rightSide").append(createPtagRight);
+        };
+        $(document).on('click', '.moviesForList', function () {
+            var clicked = this.id; // creates a variable to represent the value of the id of the movie clicked on from the currently in theaters list
+            console.log(clicked);
+            console.log(results);
+            for (r = 0; r < results.length; r++) {
+                if (results[r].title === clicked) {
+                    console.log("found a match")
+                    console.log(r);
+                    for (z = 0; z < results[r].showtimes.length; z++) {
+                        var theatreDisplay = results[r].showtimes[z].theatre.name;
+                        var showtimesDisplay = results[r].showtimes[z].dateTime;
+                        console.log(theatreDisplay);
+                        console.log(showtimesDisplay);
+                        var timeDisplay = showtimesDisplay.slice(11);
+                        var dateDisplay = showtimesDisplay.slice(0, 10);
 
-        for (var i = 0; i < results.length; i++) {
-            var title = results[i].title;
-            console.log(title);
-            for (j = 0; j < results[i].showtimes.length; j++) {
-                var theaterName = results[i].showtimes[j].theatre.name;
-                var showtimesDisplay = results[i].showtimes[j].dateTime;
+                        console.log(dateDisplay);
 
-                console.log(theaterName);
-                console.log(showtimesDisplay);
-            }
+                        function convert(input) {
+                            return moment(input, 'HH:mm:ss').format('h:mm A');
+                        }
+                        console.log(convert(timeDisplay));
+                        var createTDtheatre = $("<td>").html(theatreDisplay);
+                        var createTDshowtimes = $("<td>").html(convert(timeDisplay));
+                        var createTR = $("<tr>").append(createTDtheatre, createTDshowtimes);
+                        $("#showtimeTable").append(createTR);
+                    };
 
+                    $("#theatresLabel").html("Theatres Playing " + clicked + " in " + userZipCodeInput);
+                    var dateLabel = moment(userDateInput).format("MMMM Do YYYY");
+                    console.log(dateLabel);
+                    $("#showtimesLabel").html("Showtimes on " + dateLabel);
+                } else {
+                    continue;
+                }
+            };
 
-
-
-            // var createTDtitle = $("<td>").html(title);
-            // $("#showtimeTable").append(createTDtitle);
-        }
-        // for (i = 0; i < results.length; i++) {
-        //     var movieName = results[i].title;
-        //     var theaterName = results[i].showtimes[i].theatre.name;   // I think this line may cause a problem, b/c the number of showtimes will be less than the number of movies
-        //     var showtimesDisplay = results[i].showtimes[i].dateTime;
-        //     var createTDtitle = $("<td>").html(movieName);
-        //     var createTDtheater = $("<td>").html(theaterName);
-        //     var createTDtimes = $("<td>").html(showtimesDisplay);
-        //     var createTRtitle = $("<tr>").append(createTDtitle, createTDtheater, createTDtimes);
-        //     $("#showtimeTable").append(createTRtitle);
-
-
-        // }
+        });
     });
-
-};
-
-
-
-
-
+}; // end of findMovies function
+$(document).on('click', '#searchNewMovie', function () {
+    $("#zipCodeField").val("");
+    $("#dateField").val("");
+    $("#searchNewMovie").remove();
+    $("#leftSide").html("");
+    $("#rightSide").html("");
+    $("#showtimeTable").html("");
+});
 //enter button code -az *************
 function enter() {
     event.preventDefault();
     if (event.keyCode === 13) {
         document.getElementById("goButton").click();
     }
-
 }
-
 var input = document.getElementById("movieInput");
 input.addEventListener("keyup", enter);
 //end enter button function *********
-
 //this is the yuotTube API call for the top 8 posters from the header -kn*************
 $('.trailer-image').on('click', function (e) {
     e.preventDefault();
@@ -149,7 +147,6 @@ $('.trailer-image').on('click', function (e) {
     youtubeFunc(userMovieInputYT);
     //end second youTube API call for header movies **************
 })
-
 //This is stating the function for YouTube API once, so we can use "youtubefunc" in multiple places. -kn ************
 function youtubeFunc(input) {
     var youTubeAPI = {
@@ -157,7 +154,7 @@ function youtubeFunc(input) {
         part: "?part=snippet",
         results: "&maxResults=1",
         type: "&type=video",
-        q: "&q=" + input,
+        q: "&q=" + input + " official movie trailer",
         videoEmbed: "&videoEmbeddable=true",
         key: "&key=AIzaSyA48DgSrZgc7HxXqMqf1nwRIgn7pfYq_Ig"
     };
