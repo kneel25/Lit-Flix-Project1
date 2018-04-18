@@ -36,7 +36,7 @@ $("#goButton").on("click", function () {
     var userMovieInputYT = $("#movieInput").val().trim() + "official movie trailer";
     youtubeFunc(userMovieInput);
     // end youTube API call************
-}); // end of gobutton onclick function
+});   // end of gobutton onclick function
 $("#showtimeButton").on("click", function () {
     var userZipCodeInput = $("#zipCodeField").val().trim();
     console.log(userZipCodeInput);
@@ -48,7 +48,7 @@ $("#showtimeButton").on("click", function () {
     } else {
         findMovies();
     }
-}); // end of showtimeButton onclick function
+});   // end of showtimeButton onclick function
 function findMovies() {
     $("#missingInput").html("");
     var newSearchButton = $("<button>").attr("class", "btn btn-default");
@@ -83,24 +83,23 @@ function findMovies() {
             $("#rightSide").append(createPtagRight);
         };
         $(document).on('click', '.moviesForList', function () {
-            var clicked = this.id; // creates a variable to represent the value of the id of the movie clicked on from the currently in theaters list
+            var clicked = this.id;        // creates a variable to represent the value of the id of the movie clicked on from the currently in theaters list
             console.log(clicked);
             console.log(results);
             for (r = 0; r < results.length; r++) {
                 if (results[r].title === clicked) {
                     console.log("found a match")
                     console.log(r);
-                    for (z = 0; z < results[r].showtimes.length; z++) {
+                    for (z = 0; z < results[r].showtimes.length; z++){
                         var theatreDisplay = results[r].showtimes[z].theatre.name;
                         var showtimesDisplay = results[r].showtimes[z].dateTime;
-                        console.log(theatreDisplay);
-                        console.log(showtimesDisplay);
+                        console.log (theatreDisplay);
+                        console.log (showtimesDisplay);
                         var timeDisplay = showtimesDisplay.slice(11);
                         var dateDisplay = showtimesDisplay.slice(0, 10);
-
+                        
                         console.log(dateDisplay);
-
-                        function convert(input) {
+                        function convert (input){
                             return moment(input, 'HH:mm:ss').format('h:mm A');
                         }
                         console.log(convert(timeDisplay));
@@ -109,19 +108,19 @@ function findMovies() {
                         var createTR = $("<tr>").append(createTDtheatre, createTDshowtimes);
                         $("#showtimeTable").append(createTR);
                     };
-
-                    $("#theatresLabel").html("Theatres Playing " + clicked + " in " + userZipCodeInput);
+                    
+                    $("#theatresLabel").html("Theatres Playing " + clicked +  " in "  + userZipCodeInput);
                     var dateLabel = moment(userDateInput).format("MMMM Do YYYY");
-                    console.log(dateLabel);
+                    console.log (dateLabel);
                     $("#showtimesLabel").html("Showtimes on " + dateLabel);
                 } else {
                     continue;
                 }
             };
-
+            
         });
     });
-}; // end of findMovies function
+};   // end of findMovies function
 $(document).on('click', '#searchNewMovie', function () {
     $("#zipCodeField").val("");
     $("#dateField").val("");
@@ -159,9 +158,9 @@ function youtubeFunc(input) {
         key: "&key=AIzaSyA48DgSrZgc7HxXqMqf1nwRIgn7pfYq_Ig"
     };
     $.ajax({
-            url: youTubeAPI.url + youTubeAPI.part + youTubeAPI.results + youTubeAPI.type + youTubeAPI.q + youTubeAPI.videoEmbed + youTubeAPI.key,
-            method: "GET"
-        })
+        url: youTubeAPI.url + youTubeAPI.part + youTubeAPI.results + youTubeAPI.type + youTubeAPI.q + youTubeAPI.videoEmbed + youTubeAPI.key,
+        method: "GET"
+    })
         .done(function (response) {
             console.log(response);
             for (var i = 0; i < response.items.length; i++) {
