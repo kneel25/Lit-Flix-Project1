@@ -1,12 +1,6 @@
-console.log("javascript works")
+function omdbAPIFunc(input){                    // function that calls the OMDb API (used for poster and overview)
 
-$("#goButton").on("click", function () {
-
-    //start OMDB API CALL -kn **********
-    var userMovieInput = $("#movieInput").val().trim();
-    console.log(userMovieInput);
-    var queryURL = "https://www.omdbapi.com/?t=" + userMovieInput + "&y=&plot=full&apikey=6c0bb571";
-
+    var queryURL = "https://www.omdbapi.com/?t=" + input + "&y=&plot=full&apikey=6c0bb571";
     //ajax function
     $.ajax({
         url: queryURL,
@@ -14,39 +8,40 @@ $("#goButton").on("click", function () {
     }).then(function (response) {
         console.log(response)
 
-        //poster
-        var imgPoster = response.Poster;
-        var posterDiv = $("<img>").attr("src", imgPoster);
-        $("#image-poster").html(posterDiv);
-        //description
-        var description = response.Plot;
-        var descriptionDiv = $("<p>").html("<strong>Description:</strong> " + description);
-        $("#description").html(descriptionDiv);
-        console.log(descriptionDiv)
-        //rating
-        var rating = response.Rated;
-        var ratingDiv = $("<p>").html("<strong>Rating:</strong> " + rating);
-        $("#rating").html(ratingDiv);
-        //runtime
-        var runTime = response.Runtime;
-        var runTimeDiv = $("<p>").html("<strong>Run Time:</strong> " + runTime);
-        $("#runtime").html(runTimeDiv);
-        //release date
-        var releaseDate = response.Released;
-        var releaseDateDiv = $("<p>").html("<strong>Release Date:</strong> " + releaseDate);
-        $("#releasedate").html(releaseDateDiv);
+        var imgPoster = response.Poster;                            // variable to store the poster returned in the results
+        var posterDiv = $("<img>").attr("src", imgPoster);          // variable that creates an img tag for the poster
+        $("#image-poster").html(posterDiv);                         // add the poster to the newly created img tag
 
-    });
+        var description = response.Plot;                                                        // variable to store the plot returned in the results
+        var descriptionDiv = $("<p>").html("<strong>Description:</strong> " + description);     // variable that creates an p tag for the plot
+        $("#description").html(descriptionDiv);                                                 // add the plot to the newly created p tag
+        console.log(descriptionDiv)         
 
-    // youTube API call for all movie trailers entered from search bar. -cr ******************
-    var userMovieInputYT = $("#movieInput").val().trim() + "official movie trailer";
-    youtubeFunc(userMovieInput);
+        var rating = response.Rated;                                                // variable to store the rating returned in the results
+        var ratingDiv = $("<p>").html("<strong>Rating:</strong> " + rating);        // variable that creates a p tag for the rating
+        $("#rating").html(ratingDiv);                                               // add the rating to the newly created p tag
+
+        var runTime = response.Runtime;                                             // variable to store the run time returned in the results
+        var runTimeDiv = $("<p>").html("<strong>Run Time:</strong> " + runTime);    // variable that creates a p tag for the run time
+        $("#runtime").html(runTimeDiv);                                             // add the run time to the newly create p tag
+
+        var releaseDate = response.Released;                                                    // variable to store the release date returned in the results
+        var releaseDateDiv = $("<p>").html("<strong>Release Date:</strong> " + releaseDate);    // variable that creates a p tag for the release date
+        $("#releasedate").html(releaseDateDiv);                                                 // add the releaes date to the newly created p tag
+    });                                                             // end of OMDb API function
+};
+$("#goButton").on("click", function () {                                                        // function for youTube API pull (used for trailer)
+
+    var userMovieInputYT = $("#movieInput").val().trim() + "official movie trailer";            // 
+    var userMovieInput = $("#movieInput").val().trim();
+
+    youtubeFunc(userMovieInputYT);
+    omdbAPIFunc(userMovieInput)
     // end youTube API call************
-
-});   
+});
 // end of gobutton onclick function
-
 $("#showtimeButton").on("click", function () {
+
     var userZipCodeInput = $("#zipCodeField").val().trim();
     console.log(userZipCodeInput);
 
@@ -55,25 +50,25 @@ $("#showtimeButton").on("click", function () {
     console.log(userDateInput);
 
     if ((userZipCodeInput === "") || (userDateInput === "")) {
+
         $("#missingInput").html("Missing input. Please input a zip code and a date.")
     } else {
         findMovies();
     }
-});   
+});
 // end of showtimeButton onclick function
-
 function findMovies() {
     $("#missingInput").html("");
 
     var newSearchButton = $("<button>").attr("class", "btn btn-default");
     $(newSearchButton).attr("type", "button");
     $(newSearchButton).attr("id", "searchNewMovie");
-    $(newSearchButton).html("Search for a new movie");
+    $(newSearchButton).html("Search using a new zip code or date");
+
     $("#searchButtons").append(newSearchButton);
 
     var userZipCodeInput = $("#zipCodeField").val().trim();
     var userDateInput = $("#dateField").val().trim();
-
     var queryShowtimeURL = "https://data.tmsapi.com/v1.1/movies/showings?startDate=" + userDateInput + "&zip=" + userZipCodeInput + "&api_key=c8v7sma8c67xv5zkxcd7ndb6";
 
     $.ajax({
@@ -88,83 +83,73 @@ function findMovies() {
         console.log(infoRightSide);
 
         for (h = 0; h < infoLeftSide.length; h++) {
-
             var titleDisplayLeft = infoLeftSide[h].title;
             var createPtagLeft = $("<p>").html(titleDisplayLeft);
+
             $(createPtagLeft).attr("class", "moviesForList");
             $(createPtagLeft).attr("id", infoLeftSide[h].title);
             $("#leftSide").append(createPtagLeft);
-
         };
-
         for (w = 0; w < infoRightSide.length; w++) {
-
             var titleDisplayRight = infoRightSide[w].title;
             var createPtagRight = $("<p>").html(titleDisplayRight);
+
             $(createPtagRight).attr("class", "moviesForList");
             $(createPtagRight).attr("id", infoRightSide[w].title);
             $("#rightSide").append(createPtagRight);
 
         };
-
         $(document).on('click', '.moviesForList', function () {
-
             var clicked = this.id;        // creates a variable to represent the value of the id of the movie clicked on from the currently in theaters list
             console.log(clicked);
             console.log(results);
 
-            for (r = 0; r < results.length; r++) {
+            omdbAPIFunc(clicked);
+            youtubeFunc(clicked);
 
+            for (r = 0; r < results.length; r++) {
                 if (results[r].title === clicked) {
                     console.log("found a match")
                     console.log(r);
 
-                    for (z = 0; z < results[r].showtimes.length; z++){
+                    for (z = 0; z < results[r].showtimes.length; z++) {
                         var theatreDisplay = results[r].showtimes[z].theatre.name;
                         var showtimesDisplay = results[r].showtimes[z].dateTime;
-                        console.log (theatreDisplay);
-                        console.log (showtimesDisplay);
+                        console.log(theatreDisplay);
+                        console.log(showtimesDisplay);
 
                         var timeDisplay = showtimesDisplay.slice(11);
                         var dateDisplay = showtimesDisplay.slice(0, 10);
-                        
                         console.log(dateDisplay);
 
-                        function convert (input){
+                        function convert(input) {
                             return moment(input, 'HH:mm:ss').format('h:mm A');
                         }
                         console.log(convert(timeDisplay));
 
+                        var createTDtitle = $("<td>").html(clicked);
                         var createTDtheatre = $("<td>").html(theatreDisplay);
                         var createTDshowtimes = $("<td>").html(convert(timeDisplay));
-                        var createTR = $("<tr>").append(createTDtheatre, createTDshowtimes);
-
+                        
+                        var createTR = $("<tr>").attr("class", "newRow");
+                        $(createTR).append(createTDtitle, createTDtheatre, createTDshowtimes);
                         $("#showtimeTable").append(createTR);
-
                     };
-                    
-                    $("#theatresLabel").html("Theatres Playing " + clicked +  " in "  + userZipCodeInput);
-
-                    var dateLabel = moment(userDateInput).format("MMMM Do YYYY");
-                    console.log (dateLabel);
-                    $("#showtimesLabel").html("Showtimes on " + dateLabel);
-
                 } else {
                     continue;
                 }
             };
-            
         });
     });
 };   // end of findMovies function
-
 $(document).on('click', '#searchNewMovie', function () {
+
     $("#zipCodeField").val("");
     $("#dateField").val("");
     $("#searchNewMovie").remove();
     $("#leftSide").html("");
     $("#rightSide").html("");
-    $("#showtimeTable").html("");
+    $(".newRow").remove();
 });
 
 //enter button code -az *************
@@ -178,12 +163,12 @@ var input = document.getElementById("movieInput");
 input.addEventListener("keyup", enter);
 //end enter button function *********
 
-
 //this is the youTube API call for the top 8 posters from the header -kn*************
 $('.trailer-image').on('click', function (e) {
     e.preventDefault();
-    var userMovieInputYT = this.title;
-    youtubeFunc(userMovieInputYT);
+    var userMovieInput = this.title;
+    youtubeFunc(userMovieInput);
+    omdbAPIFunc(userMovieInput);
     //end second youTube API call for header movies **************
 })
 

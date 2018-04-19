@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,29 +10,29 @@
         crossorigin="anonymous">
     <!-- google fonts link-->
     <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
-    <!-- css link  -->
+    <!-- materialze  and  style.css link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <!-- tab icon -->
+    <!-- tab icon  and  search icons -->
     <link rel="icon" href="assets/images/pop1.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body background="assets/images/reel3.jpg">
-    <!-- clicks in the header to go to the image trailer in youtube -->
     <header>
         <img src="assets/images/litnowords.png" alt="Banner Image" style="width:100%" usemap="#image-map">
         <br>
         <br>
     </header>
-    <map name="image-map">
-        <map name="image-map">
+    <map name="image-map">  
+        <map name="image-map"> 
             <area class="trailer-image" target="_blank" alt="Harry Potter and The Goblet of Fire" title="Harry Potter and The Goblet of Fire"
                 href="https://youtu.be/PFWAOnvMd1Q" coords="170,4,-1,240" shape="rect">
             <area class="trailer-image" target="_blank" alt="Mulan" title="Mulan" href="https://youtu.be/TVcLIfSC4OE" coords="340,257,178,3"
                 shape="rect">
             <area class="trailer-image" target="_blank" alt="Clueless" title="Clueless" href="https://youtu.be/RS0KyTZ3Ie4" coords="340,5,500,257"
                 shape="rect">
-            <area class="trailer-image" target="_blank" alt="Avengers Infinity Wars" title="Avengers Infinity Wars" href="https://youtu.be/6ZfuNTqbHE8"
+            <area class="trailer-image" target="_blank" alt="Avengers: Infinity War" title="Avengers: Infinity War" href="https://youtu.be/6ZfuNTqbHE8"
                 coords="510,0,677,257" shape="rect">
             <area class="trailer-image" target="_blank" alt="Kiki's Delivery Service" title="Kiki's Delivery Service" href="https://youtu.be/4bG17OYs-GA"
                 coords="845,255,680,1" shape="rect">
@@ -39,13 +40,12 @@
                 coords="1025,254,840,0" shape="rect">
             <area class="trailer-image" target="_blank" alt="Ready Player One" title="Ready Player One" href="https://youtu.be/cSp1dM2Vj48"
                 coords="1015,1,1180,257" shape="rect">
-            <area class="trailer-image" target="_blank" alt="StarWars" title="StarWars" href="https://youtu.be/vP_1T4ilm8M" coords="1180,1,1350,254"
-                shape="rect">
+            <area class="trailer-image" target="_blank" alt="Star Wars: Episode IV – A New Hope" title="Star Wars: Episode IV – A New Hope"
+                href="https://youtu.be/vP_1T4ilm8M" coords="1180,1,1350,254" shape="rect">
         </map>
-    </map>
-    <!-- end image-map***************** -->
-    <div class="row">
-        <!-- row to hold movie search form -->
+    </map>                                               <!-- end image-map***************** -->
+    
+    <div class="row">                                      <!-- row to hold movie search form -->
         <div class="col-md-12">
             <div id="movie-search" class="input-group">
                 <input type="text" class="form-control" id="movieInput" placeholder="Movie search...">
@@ -54,62 +54,56 @@
                 </span>
             </div>
         </div>
-    </div>
+    </div>                                                 <!-- closing tag for row holding the movie search form -->
+    
     <div class="container-fluid">
-    <div class="row">
-        <!-- row to hold the movie poster and movie description-->
-        <div class="col-md-5">
-            <div id="poster" class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class "text-center">Movie Overview</h3>
+        <div class="row">                                   <!-- row to hold the movie poster and movie description-->
+            <div class="col-md-5">
+                <div id="poster" class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class "text-center">Movie Overview</h3>
+                    </div>
+                    
+                    <div id="image-poster"></div>           <!-- ***** THIS IS WHERE THE MOVIE POSTER WILL GO *****  -->
+                    <div class="posterinfo">        
+                    <p id="description"> </p>               <!-- ***** THIS IS WHERE THE MOVIE DESCRIPTION WILL GO *****  -->
+                        
+                    </div>
+
+                    <div class="info">
+                        <p class="" id="rating"></p>        <!-- ***** THIS IS WHERE THE MOVIE RATING WILL GO *****  -->
+                        <p class="" id="runtime"></p>       <!-- ***** THIS IS WHERE THE MOVIE RUNTIME WILL GO *****  -->
+                        <p class="" id="releasedate"></p>   <!-- ***** THIS IS WHERE THE MOVIE RELEASE DATE WILL GO *****  -->
+                        
+                    </div>
                 </div>
-            <!-- ***** THIS IS WHERE THE MOVIE POSTER WILL GO *****  -->
-            <div id="image-poster"></div>
-            
-            <div class="posterinfo">
-                
-                <p id="description"> </p>
-                <!-- ***** THIS IS WHERE THE MOVIE DESCRIPTION WILL GO *****  -->
-                
-            </div>
-              
-            <div class="info">
-
-                <p class="" id="rating"></p>
-                <!-- ***** THIS IS WHERE THE MOVIE RATING WILL GO *****  -->
-                <p class="" id="runtime"></p>
-                <!-- ***** THIS IS WHERE THE MOVIE RUNTIME WILL GO *****  -->
-                <p class="" id="releasedate"></p>
-                <!-- ***** THIS IS WHERE THE MOVIE RELEASE DATE WILL GO *****  -->
-            
             </div>
 
-            </div>
-        </div>
-        <div class="col-md-6">
+            <div class="col-md-6">
                 <div id="trailer" class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="text-center">Trailer</h3>
+                        <h3 class="text-center">Trailer</h3>    
                     </div>
-                    <!-- ***** THIS IS WHERE THE TRAILER WILL GO *****  -->
-                    <span class="trailer"></span>
+                    
+                    <span class="trailer"></span>               <!-- ***** THIS IS WHERE THE TRAILER WILL GO *****  -->
                 </div>
             </div>
-    </div>
-    <!-- closing tag for the row that holds the movie search form  -->
+        </div>                                                  <!-- closing tag for row holding the movie poster and overview -->
+    </div>                                                  
+    
     <div id "container">
-        <div class="row">
-            <!-- row to hold showtime search and table and trailer-->
-            <div class="col-md-2"></div>
+        <div class="row">                                       <!-- row to hold showtime search and table -->
             
-            <div class="col-md-8">
+            <div class="col-md-2"></div>                        <!-- empty div to get row to equal 12 -->
+
+            <div class="col-md-8">                                  <!-- div to hold showtime search and table display -->
                 <div id="movie-time" class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class "text-center">Search For Movies Playing In Theaters</h3>
                         <p id="missingInput"></p>
                         <div id="zip-search" class="input-group">
                             <i class="material-icons">add_location</i>
-                            <input type="text" class="form-control" id="zipCodeField" placeholder="Enter a 5-digit zip code">
+                            <input type="number" class="form-control" id="zipCodeField" placeholder="Enter a 5-digit zip code">
                         </div>
                         <br>
                         <div id="pickDate" class="input-group">
@@ -135,28 +129,32 @@
                             <table style="width:100%" id="showtimeTable">
                                 <tr>
                                     <!-- <th>Movie</th>  -->
-                                    <th id="theatresLabel"></th>
-                                    <th id="showtimesLabel"></th>
+                                    <th>Movie</th>
+                                    <th>Theatres Playing Your Selected Movie</th>
+                                    <th>Showtimes</th>
                                 </tr>
                             </table>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-2"></div>
-        </div>
+            </div>                                                  <!-- closing tag for div holding showtime search and table display -->
+            
+            <div class="col-md-2"></div>                             <!-- empty div to get row to equal 12 -->
+        
+        </div>                                                      <!-- closing tag for container holding showtime search and table -->
     </div>
-    <!-- closing tag for the row for showtime search and trailer -->
-    <!-- closing tag for the movie poster and description and rating  -->
+
+    
+    <!-- jQuery  and  javascript links -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- JS link -->
     <script src="assets/javascript.js"></script>
-    <!-- connects to jquery library  -->
-    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-        crossorigin="anonymous"></script> -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+
+    <!-- moment.js  and  materialize js  links-->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment.min.js"></script>
     <script type="text/javascript" src="assets/js/materialize.min.js"></script>
 </body>
+
 </html>
